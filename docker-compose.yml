@@ -1,0 +1,25 @@
+version: "3.8"
+services:
+  user_mgmt:
+    build:
+      dockerfile: ./user-mgmt-svc
+    command: bash -c "sleep infinity"
+    # command: make start
+    environment:
+      POSTGRES_URL: postgres://postgres:root@user_mgmt_pg:5432/user_mgmt?sslmode=disable
+    depends_on:
+      - user_mgmt_pg
+    volumes:
+      - ./user-mgmt-svc:/app
+    ports:
+      # grpc port
+      - 8080:8080
+      # debug port
+      - 2345:2345
+  user_mgmt_pg:
+    image: postgres:14.5-alpine
+    environment:
+      POSTGRES_PASSWORD: "root"
+      POSTGRES_DB: "user_mgmt"
+    ports:
+      - 5432:5432

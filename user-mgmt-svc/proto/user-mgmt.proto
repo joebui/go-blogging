@@ -1,0 +1,17 @@
+syntax = "proto3";
+package proto;
+option go_package = "go-blogging/user-mgmt-svc/pb";
+
+service UserMgmt {
+  rpc SignUp (SignUpRequest) returns (SignUpResponse) {}
+}
+
+message SignUpRequest {
+  string username = 1;
+  string email = 2;
+  string password = 3;
+}
+
+message SignUpResponse {
+  string token = 1;
+}
