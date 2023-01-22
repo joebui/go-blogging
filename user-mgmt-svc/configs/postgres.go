@@ -3,14 +3,15 @@ package configs
 import (
 	"database/sql"
 	"fmt"
+
+	_ "github.com/lib/pq"
 )
 
 var db *sql.DB = nil
 
 func initPostgres() {
 	var err error
-	db, err = sql.Open("postgres", GetEnv().PostgresUrl)
-	if err != nil {
+	if db, err = sql.Open("postgres", GetEnv().PostgresUrl); err != nil {
 		fmt.Println(err)
 	}
 }

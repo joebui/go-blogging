@@ -6,7 +6,9 @@ services:
     command: bash -c "sleep infinity"
     # command: make start
     environment:
+      ENV: development
       POSTGRES_URL: postgres://postgres:root@user_mgmt_pg:5432/user_mgmt?sslmode=disable
+      JWT_SECRET: FN3H35wZS2jpkbBZ
     depends_on:
       - user_mgmt_pg
     volumes:

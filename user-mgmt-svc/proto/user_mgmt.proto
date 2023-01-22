@@ -4,6 +4,7 @@ option go_package = "go-blogging/user-mgmt-svc/pb";
 
 service UserMgmt {
   rpc SignUp (SignUpRequest) returns (SignUpResponse) {}
+  rpc SignIn (SignInRequest) returns (SignInResponse) {}
 }
 
 message SignUpRequest {
@@ -12,6 +13,15 @@ message SignUpRequest {
   string password = 3;
 }
 
+message SignInRequest {
+  string email = 2;
+  string password = 3;
+}
+
 message SignUpResponse {
+  string token = 1;
+}
+
+message SignInResponse {
   string token = 1;
 }

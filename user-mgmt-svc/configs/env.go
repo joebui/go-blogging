@@ -10,8 +10,8 @@ type EnvConfig struct {
 
 var envConfig = &EnvConfig{
 	PostgresUrl: os.Getenv("POSTGRES_URL"),
-	JwtSecret:   "VERY_SECRET_VALUE123",
-	Env:         "development",
+	JwtSecret:   os.Getenv("JWT_SECRET"),
+	Env:         os.Getenv("ENV"),
 }
 
 func GetEnv() *EnvConfig {
