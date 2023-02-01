@@ -3,9 +3,7 @@ package configs
 import "os"
 
 type EnvConfig struct {
-	PostgresUrl string
-	JwtSecret   string
-	Env         string
+	PostgresUrl, JwtSecret, Env string
 }
 
 var envConfig = &EnvConfig{

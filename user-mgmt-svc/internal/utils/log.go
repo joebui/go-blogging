@@ -2,7 +2,7 @@ package utils
 
 import "go.uber.org/zap"
 
-var logger, _ = zap.NewProduction()
+var logger, _ = zap.NewDevelopment()
 var sugar = logger.Sugar()
 
 func LogError(msg string, values ...interface{}) {

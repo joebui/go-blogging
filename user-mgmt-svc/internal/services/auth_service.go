@@ -8,12 +8,6 @@ import (
 	"github.com/golang-jwt/jwt"
 )
 
-type SignUp struct {
-	Username string `validate:"required,min=3,max=10"`
-	Email    string `validate:"required,email"`
-	Password string `validate:"required,min=5"`
-}
-
 var secret = []byte(configs.GetEnv().JwtSecret)
 
 func GenerateJwt(username string) (string, error) {

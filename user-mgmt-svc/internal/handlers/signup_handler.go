@@ -9,7 +9,13 @@ import (
 	"github.com/go-playground/validator/v10"
 )
 
-func validateRequest(data *services.SignUp) error {
+type SignUp struct {
+	Username string `validate:"required,min=3,max=10"`
+	Email    string `validate:"required,email"`
+	Password string `validate:"required,min=5"`
+}
+
+func validateSignUpRequest(data *SignUp) error {
 	err := validator.New().Struct(data)
 	if err != nil {
 		return err
@@ -18,13 +24,13 @@ func validateRequest(data *services.SignUp) error {
 }
 
 func SignUpHandler(ctx context.Context, req *pb.SignUpRequest) (*pb.SignUpResponse, error) {
-	signUpData := services.SignUp{
+	signUpData := SignUp{
 		Username: req.Username,
 		Email:    req.Email,
 		Password: req.Password,
 	}
 
-	if valErr := validateRequest(&signUpData); valErr != nil {
+	if valErr := validateSignUpRequest(&signUpData); valErr != nil {
 		return nil, valErr
 	}
 
