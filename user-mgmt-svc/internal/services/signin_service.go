@@ -18,16 +18,16 @@ func verifyPassword(hashedPassword string, rawPassword string) error {
 	return nil
 }
 
-func SignedInUsername(data *types.UserSignInData) (string, error) {
+func SignedInUserId(data *types.UserSignInData) (int64, error) {
 	user, repoErr := repositories.UserByEmail(&data.Email)
 	if repoErr != nil {
-		return "", repoErr
+		return 0, repoErr
 	}
 
 	err := verifyPassword(user.Password, data.Password)
 	if err != nil {
-		return "", err
+		return 0, err
 	}
 
-	return user.Username, nil
+	return user.Id, nil
 }

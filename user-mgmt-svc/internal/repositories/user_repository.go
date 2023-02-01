@@ -17,6 +17,7 @@ func InsertUser(data *types.InsertUserData) error {
 		utils.LogError("Insert user error", dbErr)
 		return dbErr
 	}
+
 	return nil
 }
 

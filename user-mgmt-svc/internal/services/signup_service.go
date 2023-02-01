@@ -18,16 +18,21 @@ func passwordHash(password string) (string, error) {
 	return string(hash), nil
 }
 
-func UserSignUp(user *types.InsertUserData) error {
+func UserSignUp(user *types.InsertUserData) (int64, error) {
 	hash, hashErr := passwordHash(user.Password)
 	if hashErr != nil {
-		return hashErr
+		return 0, hashErr
 	}
 
 	user.Password = hash
 	if err := repositories.InsertUser(user); err != nil {
-		return err
+		return 0, err
 	}
 
-	return nil
+	newUser, err := repositories.UserByEmail(&user.Email)
+	if err != nil {
+		return 0, err
+	}
+
+	return newUser.Id, nil
 }

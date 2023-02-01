@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"fmt"
 	"go-blogging/user-mgmt-svc/internal/handlers"
 	"go-blogging/user-mgmt-svc/internal/types"
 	"go-blogging/user-mgmt-svc/internal/utils"
@@ -18,7 +19,7 @@ func (s *grpcServer) SignUp(ctx context.Context, req *pb.SignUpRequest) (*pb.Sig
 	if err != nil {
 		return nil, err
 	}
-
+	fmt.Println(jwtToken)
 	return jwtToken, nil
 }
 
@@ -29,5 +30,5 @@ func (s *grpcServer) SignIn(ctx context.Context, req *pb.SignInRequest) (*pb.Sig
 		return nil, err
 	}
 
-	return &pb.SignInResponse{Token: jwtToken}, nil
+	return &pb.SignInResponse{Token: jwtToken, ExpiresIn: int32(utils.JWT_EXPIRY_IN_S)}, nil
 }

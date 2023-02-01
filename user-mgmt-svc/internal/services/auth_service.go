@@ -10,12 +10,12 @@ import (
 
 var secret = []byte(configs.GetEnv().JwtSecret)
 
-func GenerateJwt(username string) (string, error) {
+func GenerateJwt(userId int64) (string, error) {
 	token := jwt.NewWithClaims(
 		jwt.SigningMethodHS256,
 		jwt.MapClaims{
-			"exp":      time.Now().Add(60 * time.Minute),
-			"username": username,
+			"exp":    time.Now().Add(utils.JWT_EXPIRY),
+			"userId": userId,
 		},
 	)
 	jwt, err := token.SignedString(secret)

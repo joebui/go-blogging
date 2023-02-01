@@ -30,12 +30,12 @@ func SignInHandler(ctx context.Context, input *types.UserSignInData) (string, er
 		return "", valErr
 	}
 
-	username, err := services.SignedInUsername(input)
+	id, err := services.SignedInUserId(input)
 	if err != nil {
 		return "", err
 	}
 
-	jwt, jwtErr := services.GenerateJwt(username)
+	jwt, jwtErr := services.GenerateJwt(id)
 	if jwtErr != nil {
 		return "", jwtErr
 	}

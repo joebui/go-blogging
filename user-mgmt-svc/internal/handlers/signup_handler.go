@@ -4,6 +4,7 @@ import (
 	"context"
 	"go-blogging/user-mgmt-svc/internal/services"
 	"go-blogging/user-mgmt-svc/internal/types"
+	"go-blogging/user-mgmt-svc/internal/utils"
 	"go-blogging/user-mgmt-svc/pb"
 
 	"github.com/go-playground/validator/v10"
@@ -34,7 +35,7 @@ func SignUpHandler(ctx context.Context, req *pb.SignUpRequest) (*pb.SignUpRespon
 		return nil, valErr
 	}
 
-	err := services.UserSignUp(
+	id, err := services.UserSignUp(
 		&types.InsertUserData{
 			Username: signUpData.Username,
 			Email:    signUpData.Email,
@@ -45,9 +46,9 @@ func SignUpHandler(ctx context.Context, req *pb.SignUpRequest) (*pb.SignUpRespon
 		return nil, err
 	}
 
-	jwt, jwtErr := services.GenerateJwt(signUpData.Username)
+	jwt, jwtErr := services.GenerateJwt(id)
 	if jwtErr != nil {
 		return nil, jwtErr
 	}
-	return &pb.SignUpResponse{Token: jwt}, nil
+	return &pb.SignUpResponse{Token: jwt, ExpiresIn: int32(utils.JWT_EXPIRY_IN_S)}, nil
 }
