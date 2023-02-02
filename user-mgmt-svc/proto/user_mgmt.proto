@@ -5,6 +5,7 @@ option go_package = "go-blogging/user-mgmt-svc/pb";
 service UserMgmt {
   rpc SignUp (SignUpRequest) returns (SignUpResponse) {}
   rpc SignIn (SignInRequest) returns (SignInResponse) {}
+  rpc VerifyJwt (VerifyJwtRequest) returns (VerifyJwtResponse) {}
 }
 
 message SignUpRequest {
@@ -26,4 +27,12 @@ message SignUpResponse {
 message SignInResponse {
   string token = 1;
   int32 expires_in = 2;
+}
+
+message VerifyJwtRequest {
+  string token = 1;
+}
+
+message VerifyJwtResponse {
+  string user_id = 1;
 }

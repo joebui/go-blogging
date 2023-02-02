@@ -3,7 +3,6 @@ package repositories
 import (
 	"go-blogging/user-mgmt-svc/configs"
 	"go-blogging/user-mgmt-svc/internal/types"
-	"go-blogging/user-mgmt-svc/internal/utils"
 )
 
 func InsertUser(data *types.InsertUserData) error {
@@ -14,7 +13,6 @@ func InsertUser(data *types.InsertUserData) error {
 		data.Password,
 	)
 	if dbErr != nil {
-		utils.LogError("Insert user error", dbErr)
 		return dbErr
 	}
 
@@ -27,7 +25,6 @@ func UserByEmail(email *string) (*types.User, error) {
 		*email,
 	)
 	if dbErr != nil {
-		utils.LogError("[UserByEmail] got error", dbErr)
 		return nil, dbErr
 	}
 

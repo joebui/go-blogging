@@ -2,7 +2,6 @@ package main
 
 import (
 	"context"
-	"fmt"
 	"go-blogging/user-mgmt-svc/internal/handlers"
 	"go-blogging/user-mgmt-svc/internal/types"
 	"go-blogging/user-mgmt-svc/internal/utils"
@@ -14,21 +13,30 @@ type grpcServer struct {
 }
 
 func (s *grpcServer) SignUp(ctx context.Context, req *pb.SignUpRequest) (*pb.SignUpResponse, error) {
-	utils.LogInfo("SignUp rpc called")
 	jwtToken, err := handlers.SignUpHandler(ctx, req)
 	if err != nil {
 		return nil, err
 	}
-	fmt.Println(jwtToken)
 	return jwtToken, nil
 }
 
 func (s *grpcServer) SignIn(ctx context.Context, req *pb.SignInRequest) (*pb.SignInResponse, error) {
-	utils.LogInfo("SignIn rpc called")
-	jwtToken, err := handlers.SignInHandler(ctx, &types.UserSignInData{Email: req.Email, Password: req.Password})
+	jwtToken, err := handlers.SignInHandler(
+		ctx,
+		&types.UserSignInData{Email: req.GetEmail(), Password: req.GetPassword()},
+	)
 	if err != nil {
 		return nil, err
 	}
 
 	return &pb.SignInResponse{Token: jwtToken, ExpiresIn: int32(utils.JWT_EXPIRY_IN_S)}, nil
+}
+
+func (s *grpcServer) VerifyJwt(ctx context.Context, req *pb.VerifyJwtRequest) (*pb.VerifyJwtResponse, error) {
+	userId, err := handlers.VerifyJwtHandler(ctx, req.GetToken())
+	if err != nil {
+		return nil, err
+	}
+
+	return &pb.VerifyJwtResponse{UserId: userId}, nil
 }

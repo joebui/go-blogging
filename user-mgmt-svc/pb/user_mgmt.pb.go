@@ -252,6 +252,100 @@ func (x *SignInResponse) GetExpiresIn() int32 {
 	return 0
 }
 
+type VerifyJwtRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Token string `protobuf:"bytes,1,opt,name=token,proto3" json:"token,omitempty"`
+}
+
+func (x *VerifyJwtRequest) Reset() {
+	*x = VerifyJwtRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_user_mgmt_proto_msgTypes[4]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *VerifyJwtRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*VerifyJwtRequest) ProtoMessage() {}
+
+func (x *VerifyJwtRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_user_mgmt_proto_msgTypes[4]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use VerifyJwtRequest.ProtoReflect.Descriptor instead.
+func (*VerifyJwtRequest) Descriptor() ([]byte, []int) {
+	return file_user_mgmt_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *VerifyJwtRequest) GetToken() string {
+	if x != nil {
+		return x.Token
+	}
+	return ""
+}
+
+type VerifyJwtResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	UserId string `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+}
+
+func (x *VerifyJwtResponse) Reset() {
+	*x = VerifyJwtResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_user_mgmt_proto_msgTypes[5]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *VerifyJwtResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*VerifyJwtResponse) ProtoMessage() {}
+
+func (x *VerifyJwtResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_user_mgmt_proto_msgTypes[5]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use VerifyJwtResponse.ProtoReflect.Descriptor instead.
+func (*VerifyJwtResponse) Descriptor() ([]byte, []int) {
+	return file_user_mgmt_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *VerifyJwtResponse) GetUserId() string {
+	if x != nil {
+		return x.UserId
+	}
+	return ""
+}
+
 var File_user_mgmt_proto protoreflect.FileDescriptor
 
 var file_user_mgmt_proto_rawDesc = []byte{
@@ -275,17 +369,27 @@ var file_user_mgmt_proto_rawDesc = []byte{
 	0x6e, 0x73, 0x65, 0x12, 0x14, 0x0a, 0x05, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x18, 0x01, 0x20, 0x01,
 	0x28, 0x09, 0x52, 0x05, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x12, 0x1d, 0x0a, 0x0a, 0x65, 0x78, 0x70,
 	0x69, 0x72, 0x65, 0x73, 0x5f, 0x69, 0x6e, 0x18, 0x02, 0x20, 0x01, 0x28, 0x05, 0x52, 0x09, 0x65,
-	0x78, 0x70, 0x69, 0x72, 0x65, 0x73, 0x49, 0x6e, 0x32, 0x7c, 0x0a, 0x08, 0x55, 0x73, 0x65, 0x72,
-	0x4d, 0x67, 0x6d, 0x74, 0x12, 0x37, 0x0a, 0x06, 0x53, 0x69, 0x67, 0x6e, 0x55, 0x70, 0x12, 0x14,
-	0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2e, 0x53, 0x69, 0x67, 0x6e, 0x55, 0x70, 0x52, 0x65, 0x71,
-	0x75, 0x65, 0x73, 0x74, 0x1a, 0x15, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2e, 0x53, 0x69, 0x67,
-	0x6e, 0x55, 0x70, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00, 0x12, 0x37, 0x0a,
-	0x06, 0x53, 0x69, 0x67, 0x6e, 0x49, 0x6e, 0x12, 0x14, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2e,
-	0x53, 0x69, 0x67, 0x6e, 0x49, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x15, 0x2e,
-	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2e, 0x53, 0x69, 0x67, 0x6e, 0x49, 0x6e, 0x52, 0x65, 0x73, 0x70,
-	0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00, 0x42, 0x1e, 0x5a, 0x1c, 0x67, 0x6f, 0x2d, 0x62, 0x6c, 0x6f,
-	0x67, 0x67, 0x69, 0x6e, 0x67, 0x2f, 0x75, 0x73, 0x65, 0x72, 0x2d, 0x6d, 0x67, 0x6d, 0x74, 0x2d,
-	0x73, 0x76, 0x63, 0x2f, 0x70, 0x62, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x78, 0x70, 0x69, 0x72, 0x65, 0x73, 0x49, 0x6e, 0x22, 0x28, 0x0a, 0x10, 0x56, 0x65, 0x72, 0x69,
+	0x66, 0x79, 0x4a, 0x77, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x14, 0x0a, 0x05,
+	0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x74, 0x6f, 0x6b,
+	0x65, 0x6e, 0x22, 0x2c, 0x0a, 0x11, 0x56, 0x65, 0x72, 0x69, 0x66, 0x79, 0x4a, 0x77, 0x74, 0x52,
+	0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x17, 0x0a, 0x07, 0x75, 0x73, 0x65, 0x72, 0x5f,
+	0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x75, 0x73, 0x65, 0x72, 0x49, 0x64,
+	0x32, 0xbe, 0x01, 0x0a, 0x08, 0x55, 0x73, 0x65, 0x72, 0x4d, 0x67, 0x6d, 0x74, 0x12, 0x37, 0x0a,
+	0x06, 0x53, 0x69, 0x67, 0x6e, 0x55, 0x70, 0x12, 0x14, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2e,
+	0x53, 0x69, 0x67, 0x6e, 0x55, 0x70, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x15, 0x2e,
+	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2e, 0x53, 0x69, 0x67, 0x6e, 0x55, 0x70, 0x52, 0x65, 0x73, 0x70,
+	0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00, 0x12, 0x37, 0x0a, 0x06, 0x53, 0x69, 0x67, 0x6e, 0x49, 0x6e,
+	0x12, 0x14, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2e, 0x53, 0x69, 0x67, 0x6e, 0x49, 0x6e, 0x52,
+	0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x15, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2e, 0x53,
+	0x69, 0x67, 0x6e, 0x49, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00, 0x12,
+	0x40, 0x0a, 0x09, 0x56, 0x65, 0x72, 0x69, 0x66, 0x79, 0x4a, 0x77, 0x74, 0x12, 0x17, 0x2e, 0x70,
+	0x72, 0x6f, 0x74, 0x6f, 0x2e, 0x56, 0x65, 0x72, 0x69, 0x66, 0x79, 0x4a, 0x77, 0x74, 0x52, 0x65,
+	0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x18, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2e, 0x56, 0x65,
+	0x72, 0x69, 0x66, 0x79, 0x4a, 0x77, 0x74, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22,
+	0x00, 0x42, 0x1e, 0x5a, 0x1c, 0x67, 0x6f, 0x2d, 0x62, 0x6c, 0x6f, 0x67, 0x67, 0x69, 0x6e, 0x67,
+	0x2f, 0x75, 0x73, 0x65, 0x72, 0x2d, 0x6d, 0x67, 0x6d, 0x74, 0x2d, 0x73, 0x76, 0x63, 0x2f, 0x70,
+	0x62, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -300,20 +404,24 @@ func file_user_mgmt_proto_rawDescGZIP() []byte {
 	return file_user_mgmt_proto_rawDescData
 }
 
-var file_user_mgmt_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
+var file_user_mgmt_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
 var file_user_mgmt_proto_goTypes = []interface{}{
-	(*SignUpRequest)(nil),  // 0: proto.SignUpRequest
-	(*SignInRequest)(nil),  // 1: proto.SignInRequest
-	(*SignUpResponse)(nil), // 2: proto.SignUpResponse
-	(*SignInResponse)(nil), // 3: proto.SignInResponse
+	(*SignUpRequest)(nil),     // 0: proto.SignUpRequest
+	(*SignInRequest)(nil),     // 1: proto.SignInRequest
+	(*SignUpResponse)(nil),    // 2: proto.SignUpResponse
+	(*SignInResponse)(nil),    // 3: proto.SignInResponse
+	(*VerifyJwtRequest)(nil),  // 4: proto.VerifyJwtRequest
+	(*VerifyJwtResponse)(nil), // 5: proto.VerifyJwtResponse
 }
 var file_user_mgmt_proto_depIdxs = []int32{
 	0, // 0: proto.UserMgmt.SignUp:input_type -> proto.SignUpRequest
 	1, // 1: proto.UserMgmt.SignIn:input_type -> proto.SignInRequest
-	2, // 2: proto.UserMgmt.SignUp:output_type -> proto.SignUpResponse
-	3, // 3: proto.UserMgmt.SignIn:output_type -> proto.SignInResponse
-	2, // [2:4] is the sub-list for method output_type
-	0, // [0:2] is the sub-list for method input_type
+	4, // 2: proto.UserMgmt.VerifyJwt:input_type -> proto.VerifyJwtRequest
+	2, // 3: proto.UserMgmt.SignUp:output_type -> proto.SignUpResponse
+	3, // 4: proto.UserMgmt.SignIn:output_type -> proto.SignInResponse
+	5, // 5: proto.UserMgmt.VerifyJwt:output_type -> proto.VerifyJwtResponse
+	3, // [3:6] is the sub-list for method output_type
+	0, // [0:3] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
 	0, // [0:0] is the sub-list for extension extendee
 	0, // [0:0] is the sub-list for field type_name
@@ -373,6 +481,30 @@ func file_user_mgmt_proto_init() {
 				return nil
 			}
 		}
+		file_user_mgmt_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*VerifyJwtRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_user_mgmt_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*VerifyJwtResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -380,7 +512,7 @@ func file_user_mgmt_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_user_mgmt_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   4,
+			NumMessages:   6,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
@@ -408,6 +540,7 @@ const _ = grpc.SupportPackageIsVersion6
 type UserMgmtClient interface {
 	SignUp(ctx context.Context, in *SignUpRequest, opts ...grpc.CallOption) (*SignUpResponse, error)
 	SignIn(ctx context.Context, in *SignInRequest, opts ...grpc.CallOption) (*SignInResponse, error)
+	VerifyJwt(ctx context.Context, in *VerifyJwtRequest, opts ...grpc.CallOption) (*VerifyJwtResponse, error)
 }
 
 type userMgmtClient struct {
@@ -436,10 +569,20 @@ func (c *userMgmtClient) SignIn(ctx context.Context, in *SignInRequest, opts ...
 	return out, nil
 }
 
+func (c *userMgmtClient) VerifyJwt(ctx context.Context, in *VerifyJwtRequest, opts ...grpc.CallOption) (*VerifyJwtResponse, error) {
+	out := new(VerifyJwtResponse)
+	err := c.cc.Invoke(ctx, "/proto.UserMgmt/VerifyJwt", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // UserMgmtServer is the server API for UserMgmt service.
 type UserMgmtServer interface {
 	SignUp(context.Context, *SignUpRequest) (*SignUpResponse, error)
 	SignIn(context.Context, *SignInRequest) (*SignInResponse, error)
+	VerifyJwt(context.Context, *VerifyJwtRequest) (*VerifyJwtResponse, error)
 }
 
 // UnimplementedUserMgmtServer can be embedded to have forward compatible implementations.
@@ -451,6 +594,9 @@ func (*UnimplementedUserMgmtServer) SignUp(context.Context, *SignUpRequest) (*Si
 }
 func (*UnimplementedUserMgmtServer) SignIn(context.Context, *SignInRequest) (*SignInResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SignIn not implemented")
+}
+func (*UnimplementedUserMgmtServer) VerifyJwt(context.Context, *VerifyJwtRequest) (*VerifyJwtResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method VerifyJwt not implemented")
 }
 
 func RegisterUserMgmtServer(s *grpc.Server, srv UserMgmtServer) {
@@ -493,6 +639,24 @@ func _UserMgmt_SignIn_Handler(srv interface{}, ctx context.Context, dec func(int
 	return interceptor(ctx, in, info, handler)
 }
 
+func _UserMgmt_VerifyJwt_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(VerifyJwtRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserMgmtServer).VerifyJwt(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/proto.UserMgmt/VerifyJwt",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserMgmtServer).VerifyJwt(ctx, req.(*VerifyJwtRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _UserMgmt_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "proto.UserMgmt",
 	HandlerType: (*UserMgmtServer)(nil),
@@ -504,6 +668,10 @@ var _UserMgmt_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "SignIn",
 			Handler:    _UserMgmt_SignIn_Handler,
+		},
+		{
+			MethodName: "VerifyJwt",
+			Handler:    _UserMgmt_VerifyJwt_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

@@ -5,7 +5,7 @@ type InsertUserData struct {
 }
 
 type User struct {
-	Id                                              int64
+	Id                                              string
 	FirstName, LastName                             *string
 	Username, Email, Password, CreatedAt, UpdatedAt string
 }
