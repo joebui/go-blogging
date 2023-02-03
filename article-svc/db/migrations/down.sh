@@ -7,4 +7,4 @@ set -o pipefail
 
 SQL_PATH=$(realpath sql)
 
-migrate -source file://$SQL_PATH -database $POSTGRES_URL up
+migrate -source file://$SQL_PATH/ -database $POSTGRES_URL down -all

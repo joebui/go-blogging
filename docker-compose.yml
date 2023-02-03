@@ -1,10 +1,11 @@
 version: "3.8"
 services:
+  # user mgmt microservice
   user_mgmt:
+    container_name: go-blogging-user-mgmt
     build:
-      dockerfile: ./user-mgmt-svc
-    command: bash -c "sleep infinity"
-    # command: make start
+      context: ./user-mgmt-svc/local
+    command: sleep infinity
     environment:
       ENV: development
       POSTGRES_URL: postgres://postgres:root@user_mgmt_pg:5432/user_mgmt?sslmode=disable
@@ -17,8 +18,34 @@ services:
       - 8080:8080
   user_mgmt_pg:
     image: postgres:14.5-alpine
+    container_name: go-blogging-user-mgmt-db
     environment:
       POSTGRES_PASSWORD: "root"
       POSTGRES_DB: "user_mgmt"
     ports:
       - 5432:5432
+
+  # article microservice
+  article:
+    container_name: go-blogging-article
+    build:
+      context: ./article-svc/local
+    command: sleep infinity
+    environment:
+      ENV: development
+      POSTGRES_URL: postgres://postgres:root@article_pg:5432/article_svc?sslmode=disable
+    depends_on:
+      - article_pg
+    volumes:
+      - ./article-svc:/app
+    ports:
+      - 8081:8080
+      - 2345:2345
+  article_pg:
+    container_name: go-blogging-article-db
+    image: postgres:14.5-alpine
+    environment:
+      POSTGRES_PASSWORD: "root"
+      POSTGRES_DB: "article_svc"
+    ports:
+      - 5433:5432

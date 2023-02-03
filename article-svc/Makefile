@@ -1,7 +1,6 @@
 GO_DIR=cmd/server/*.go
-BIN_FILE=bin/user-mgmt-svc
+BIN_FILE=bin/article-svc
 MIGRATIONS_DIR=db/migrations
-PB_DIR=pb
 
 tidy:
 	go mod tidy

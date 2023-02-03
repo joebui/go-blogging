@@ -6,5 +6,5 @@ CREATE TABLE users (
   firstname varchar(255),
   lastname varchar(255),
   created_at timestamp NOT NULL DEFAULT now(),
-  updated_at timestamp NOT NULL DEFAULT now(),
+  updated_at timestamp NOT NULL DEFAULT now()
 );

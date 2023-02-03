@@ -40,6 +40,7 @@ func UserByEmail(email *string) (*types.User, error) {
 			&user.CreatedAt,
 			&user.UpdatedAt,
 		); err != nil {
+			defer rows.Close()
 			return nil, err
 		}
 	}
