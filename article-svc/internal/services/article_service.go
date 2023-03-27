@@ -13,3 +13,12 @@ func GetAllArticles(page int32, limit int32) ([]types.Article, error) {
 
 	return articles, nil
 }
+
+func GetArticleById(id string) (*types.Article, error) {
+	article, err := repositories.GetArticleById(id)
+	if err != nil {
+		return nil, err
+	}
+
+	return article, nil
+}

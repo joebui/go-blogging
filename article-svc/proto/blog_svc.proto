@@ -4,6 +4,7 @@ option go_package = "go-blogging/article-svc/pb";
 
 service ArticleSvc {
   rpc GetAllArticles (GetAllArticlesRequest) returns (GetAllArticlesResponse) {}
+  rpc GetArticle (GetArticleRequest) returns (GetArticleResponse) {}
 }
 
 message GetAllArticlesRequest {
@@ -11,8 +12,16 @@ message GetAllArticlesRequest {
   int32 limit = 2;
 }
 
+message GetArticleRequest {
+  string id = 1;
+}
+
 message GetAllArticlesResponse {
   repeated Article articles = 1;
+}
+
+message GetArticleResponse {
+  Article article = 1;
 }
 
 message Article {

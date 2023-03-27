@@ -25,6 +25,19 @@ func serializeArticlesProtobuf(dbArticles []types.Article) (articles []*pb.Artic
 	return
 }
 
+func serializeArticleProtobuf(dbArticle *types.Article) (article *pb.Article) {
+	article = &pb.Article{
+		Id:        dbArticle.Id,
+		Title:     dbArticle.Title,
+		Subtitle:  dbArticle.Subtitle,
+		Content:   dbArticle.Subtitle,
+		AuthorId:  dbArticle.AuthorId,
+		CreatedAt: dbArticle.CreatedAt,
+		UpdatedAt: dbArticle.UpdatedAt,
+	}
+	return
+}
+
 func GetAllArticlesHandler(page int32, limit int32) ([]*pb.Article, error) {
 	if page <= 0 {
 		return nil, errors.New("invalid page")
@@ -39,4 +52,13 @@ func GetAllArticlesHandler(page int32, limit int32) ([]*pb.Article, error) {
 	}
 
 	return serializeArticlesProtobuf(dbArticles), nil
+}
+
+func GetArticleById(id string) (*pb.Article, error) {
+	article, err := services.GetArticleById(id)
+	if err != nil {
+		return nil, err
+	}
+
+	return serializeArticleProtobuf(article), nil
 }

@@ -20,3 +20,14 @@ func (s *grpcServer) GetAllArticles(ctx context.Context, req *pb.GetAllArticlesR
 		Articles: articles,
 	}, nil
 }
+
+func (s *grpcServer) GetArticle(ctx context.Context, req *pb.GetArticleRequest) (*pb.GetArticleResponse, error) {
+	article, err := handlers.GetArticleById(req.GetId())
+	if err != nil {
+		return nil, err
+	}
+
+	return &pb.GetArticleResponse{
+		Article: article,
+	}, nil
+}
