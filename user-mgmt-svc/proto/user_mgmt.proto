@@ -1,6 +1,6 @@
 syntax = "proto3";
 package proto;
-option go_package = "go-blogging/user-mgmt-svc/pb";
+option go_package = "github.com/joebui/go-blogging/user-mgmt-svc/pb";
 
 service UserMgmt {
   rpc SignUp (SignUpRequest) returns (SignUpResponse) {}

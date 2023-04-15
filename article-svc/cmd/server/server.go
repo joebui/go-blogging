@@ -2,8 +2,8 @@ package main
 
 import (
 	"context"
-	"go-blogging/article-svc/internal/handlers"
-	"go-blogging/article-svc/pb"
+	"github.com/joebui/go-blogging/article-svc/internal/handlers"
+	"github.com/joebui/go-blogging/article-svc/pb"
 )
 
 type grpcServer struct {

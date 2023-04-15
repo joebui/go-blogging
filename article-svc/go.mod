@@ -1,4 +1,4 @@
-module go-blogging/article-svc
+module github.com/joebui/go-blogging/article-svc
 
 go 1.19
 

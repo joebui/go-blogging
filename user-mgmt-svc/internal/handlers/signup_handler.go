@@ -2,10 +2,11 @@ package handlers
 
 import (
 	"context"
-	"go-blogging/user-mgmt-svc/internal/services"
-	"go-blogging/user-mgmt-svc/internal/types"
-	"go-blogging/user-mgmt-svc/internal/utils"
-	"go-blogging/user-mgmt-svc/pb"
+
+	"github.com/joebui/go-blogging/user-mgmt-svc/internal/services"
+	"github.com/joebui/go-blogging/user-mgmt-svc/internal/types"
+	"github.com/joebui/go-blogging/user-mgmt-svc/internal/utils"
+	"github.com/joebui/go-blogging/user-mgmt-svc/pb"
 
 	"github.com/go-playground/validator/v10"
 )

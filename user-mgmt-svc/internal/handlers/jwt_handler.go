@@ -2,7 +2,8 @@ package handlers
 
 import (
 	"context"
-	"go-blogging/user-mgmt-svc/internal/services"
+
+	"github.com/joebui/go-blogging/user-mgmt-svc/internal/services"
 )
 
 func VerifyJwtHandler(ctx context.Context, token string) (string, error) {

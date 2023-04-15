@@ -2,10 +2,11 @@ package main
 
 import (
 	"context"
-	"go-blogging/user-mgmt-svc/internal/handlers"
-	"go-blogging/user-mgmt-svc/internal/types"
-	"go-blogging/user-mgmt-svc/internal/utils"
-	"go-blogging/user-mgmt-svc/pb"
+
+	"github.com/joebui/go-blogging/user-mgmt-svc/internal/handlers"
+	"github.com/joebui/go-blogging/user-mgmt-svc/internal/types"
+	"github.com/joebui/go-blogging/user-mgmt-svc/internal/utils"
+	"github.com/joebui/go-blogging/user-mgmt-svc/pb"
 )
 
 type grpcServer struct {

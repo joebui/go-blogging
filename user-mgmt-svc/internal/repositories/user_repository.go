@@ -1,8 +1,8 @@
 package repositories
 
 import (
-	"go-blogging/user-mgmt-svc/configs"
-	"go-blogging/user-mgmt-svc/internal/types"
+	"github.com/joebui/go-blogging/user-mgmt-svc/configs"
+	"github.com/joebui/go-blogging/user-mgmt-svc/internal/types"
 )
 
 func InsertUser(data *types.InsertUserData) error {

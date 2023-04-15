@@ -1,8 +1,8 @@
 package services
 
 import (
-	"go-blogging/user-mgmt-svc/internal/repositories"
-	"go-blogging/user-mgmt-svc/internal/types"
+	"github.com/joebui/go-blogging/user-mgmt-svc/internal/repositories"
+	"github.com/joebui/go-blogging/user-mgmt-svc/internal/types"
 
 	"golang.org/x/crypto/bcrypt"
 )

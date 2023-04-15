@@ -1,8 +1,8 @@
 package main
 
 import (
-	"go-blogging/article-svc/configs"
-	"go-blogging/article-svc/pb"
+	"github.com/joebui/go-blogging/article-svc/configs"
+	"github.com/joebui/go-blogging/article-svc/pb"
 	"net"
 	"os"
 

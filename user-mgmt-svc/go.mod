@@ -1,4 +1,4 @@
-module go-blogging/user-mgmt-svc
+module github.com/joebui/go-blogging/user-mgmt-svc
 
 go 1.19
 

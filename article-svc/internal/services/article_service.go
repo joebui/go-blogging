@@ -1,8 +1,8 @@
 package services
 
 import (
-	"go-blogging/article-svc/internal/repositories"
-	"go-blogging/article-svc/internal/types"
+	"github.com/joebui/go-blogging/article-svc/internal/repositories"
+	"github.com/joebui/go-blogging/article-svc/internal/types"
 )
 
 func GetAllArticles(page int32, limit int32) ([]types.Article, error) {

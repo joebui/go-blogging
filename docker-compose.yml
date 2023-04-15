@@ -26,26 +26,26 @@ services:
       - 5432:5432
 
   # article microservice
-  article:
-    container_name: go-blogging-article
-    build:
-      context: ./article-svc/local
-    command: make start
-    environment:
-      ENV: development
-      POSTGRES_URL: postgres://postgres:root@article_pg:5432/article_svc?sslmode=disable
-    depends_on:
-      - article_pg
-    volumes:
-      - ./article-svc:/app
-    ports:
-      - 8081:8080
-      - 2345:2345
-  article_pg:
-    container_name: go-blogging-article-db
-    image: postgres:14.5-alpine
-    environment:
-      POSTGRES_PASSWORD: "root"
-      POSTGRES_DB: "article_svc"
-    ports:
-      - 5433:5432
+  # article:
+  #   container_name: go-blogging-article
+  #   build:
+  #     context: ./article-svc/local
+  #   command: make start
+  #   environment:
+  #     ENV: development
+  #     POSTGRES_URL: postgres://postgres:root@article_pg:5432/article_svc?sslmode=disable
+  #   depends_on:
+  #     - article_pg
+  #   volumes:
+  #     - ./article-svc:/app
+  #   ports:
+  #     - 8081:8080
+  #     - 2345:2345
+  # article_pg:
+  #   container_name: go-blogging-article-db
+  #   image: postgres:14.5-alpine
+  #   environment:
+  #     POSTGRES_PASSWORD: "root"
+  #     POSTGRES_DB: "article_svc"
+  #   ports:
+  #     - 5433:5432

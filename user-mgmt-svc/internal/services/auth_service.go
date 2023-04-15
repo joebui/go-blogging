@@ -1,9 +1,10 @@
 package services
 
 import (
-	"go-blogging/user-mgmt-svc/configs"
-	"go-blogging/user-mgmt-svc/internal/utils"
 	"time"
+
+	"github.com/joebui/go-blogging/user-mgmt-svc/configs"
+	"github.com/joebui/go-blogging/user-mgmt-svc/internal/utils"
 
 	"github.com/golang-jwt/jwt"
 	"github.com/google/uuid"

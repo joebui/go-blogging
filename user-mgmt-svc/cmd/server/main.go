@@ -1,10 +1,11 @@
 package main
 
 import (
-	"go-blogging/user-mgmt-svc/configs"
-	"go-blogging/user-mgmt-svc/pb"
 	"net"
 	"os"
+
+	"github.com/joebui/go-blogging/user-mgmt-svc/configs"
+	"github.com/joebui/go-blogging/user-mgmt-svc/pb"
 
 	"github.com/pkg/errors"
 	"github.com/rs/zerolog"

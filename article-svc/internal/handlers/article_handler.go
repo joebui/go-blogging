@@ -2,9 +2,9 @@ package handlers
 
 import (
 	"errors"
-	"go-blogging/article-svc/internal/services"
-	"go-blogging/article-svc/internal/types"
-	"go-blogging/article-svc/pb"
+	"github.com/joebui/go-blogging/article-svc/internal/services"
+	"github.com/joebui/go-blogging/article-svc/internal/types"
+	"github.com/joebui/go-blogging/article-svc/pb"
 )
 
 const MAX_NUM_OF_RESULT = 30
