@@ -5,7 +5,7 @@ services:
     container_name: go-blogging-user-mgmt
     build:
       context: ./user-mgmt-svc/local
-    command: sleep infinity
+    command: make start
     environment:
       ENV: development
       POSTGRES_URL: postgres://postgres:root@user_mgmt_pg:5432/user_mgmt?sslmode=disable
@@ -30,7 +30,7 @@ services:
     container_name: go-blogging-article
     build:
       context: ./article-svc/local
-    command: sleep infinity
+    command: make start
     environment:
       ENV: development
       POSTGRES_URL: postgres://postgres:root@article_pg:5432/article_svc?sslmode=disable

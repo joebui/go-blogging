@@ -15,3 +15,8 @@
 # vendor/
 tmp/
 bin/
+
+# node.js
+node_modules/
+.yarn/
+dist/

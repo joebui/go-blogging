@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "rootDirs": ["src"],
+    "outDir": "dist",
+    "lib": ["es2020"],
+    "target": "es2020",
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "types": ["node"],
+    "allowJs": true,
+    "baseUrl": ".",
+    "paths": {
+      "@config/*": ["./src/config/*"],
+      "@graph/*": ["./src/graphql/*"],
+      "@resolvers/*": ["./src/resolvers/*"],
+      "@repository/*": ["src/repositories/*"],
+      "@proto/*": ["./src/proto/*"],
+      "@domain/*": ["src/services/*"]
+    }
+  },
+  "include": ["src"],
+  "exclude": ["node_modules"]
+}
