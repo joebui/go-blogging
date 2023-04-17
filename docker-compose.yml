@@ -8,7 +8,7 @@ services:
     command: make start
     environment:
       ENV: development
-      POSTGRES_URL: postgres://postgres:root@user_mgmt_pg:5432/user_mgmt?sslmode=disable
+      POSTGRES_URL: postgres://postgres:root@db:5432/user_mgmt?sslmode=disable
       JWT_SECRET: FN3H35wZS2jpkbBZ
     depends_on:
       - db
@@ -25,7 +25,7 @@ services:
     command: make start
     environment:
       ENV: development
-      POSTGRES_URL: postgres://postgres:root@article_pg:5432/article_svc?sslmode=disable
+      POSTGRES_URL: postgres://postgres:root@db:5432/article_svc?sslmode=disable
     depends_on:
       - db
     volumes:

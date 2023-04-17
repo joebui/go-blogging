@@ -13,5 +13,29 @@ export const schema = `#graphql
     articles(page: Int!, limit: Int!): [Article!]!
   }
 
+  type Mutation {
+    signUp(data: SignUpRequest!): SignUpResponse!
+    verifyJwt(data: VerifyJwtRequest!): VerifyJwtResponse!
+  }
+
+  type SignUpResponse {
+    token: String!
+    expiresIn: Int!
+  }
+
+  type VerifyJwtResponse {
+    userId: String!
+  }
+
+  input SignUpRequest {
+    username: String!
+    email: String!
+    password: String!
+  }
+
+  input VerifyJwtRequest {
+    token: String!
+  }
+
   scalar Date
 `;
