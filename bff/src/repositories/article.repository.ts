@@ -2,6 +2,8 @@ import {
   Article,
   GetAllArticlesRequest,
   GetAllArticlesResponse,
+  GetArticleRequest,
+  GetArticleResponse,
 } from "@proto/article_svc_pb";
 import { articleGrpcClient } from "@config/grpc";
 import { promisify } from "util";
@@ -19,5 +21,17 @@ export namespace ArticleRepository {
     >(articleGrpcClient.getAllArticles.bind(articleGrpcClient))(request);
 
     return response.toObject().articlesList;
+  };
+
+  export const getArticleById = async (
+    id: string
+  ): Promise<Article.AsObject> => {
+    const request = new GetArticleRequest().setId(id);
+
+    const response = await promisify<GetArticleRequest, GetArticleResponse>(
+      articleGrpcClient.getArticle.bind(articleGrpcClient)
+    )(request);
+
+    return response.toObject().article;
   };
 }

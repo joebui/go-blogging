@@ -11,6 +11,7 @@ export const schema = `#graphql
 
   type Query {
     articles(page: Int!, limit: Int!): [Article!]!
+    article(id: String!): Article!
   }
 
   type Mutation {

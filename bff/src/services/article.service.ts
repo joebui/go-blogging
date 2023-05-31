@@ -8,4 +8,8 @@ export namespace ArticleService {
   ): Promise<Article.AsObject[]> => {
     return ArticleRepository.getAllArticles(page, limit);
   };
+
+  export const getArticle = (id: string): Promise<Article.AsObject> => {
+    return ArticleRepository.getArticleById(id);
+  };
 }

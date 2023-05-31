@@ -16,3 +16,7 @@ export type VerifyJwtRequest = {
     token: string;
   };
 };
+
+export type ArticleRequest = {
+  id: string;
+};
