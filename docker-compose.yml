@@ -2,7 +2,7 @@ version: "3.8"
 services:
   # user mgmt microservice
   user_mgmt:
-    container_name: go-blogging-user-mgmt
+    container_name: gb-user
     build:
       context: ./user-mgmt-svc/local
     command: make start
@@ -19,7 +19,7 @@ services:
 
   # article microservice
   article:
-    container_name: go-blogging-article
+    container_name: gb-article
     build:
       context: ./article-svc/local
     command: make start
@@ -36,8 +36,8 @@ services:
 
   # db
   db:
-    image: postgres:14.5-alpine
-    container_name: go-blogging-db
+    image: postgres:15-alpine
+    container_name: gb-db
     environment:
       POSTGRES_PASSWORD: "root"
       POSTGRES_DB: "user_mgmt"

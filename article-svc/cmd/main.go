@@ -1,16 +1,18 @@
 package main
 
 import (
-	"github.com/joebui/go-blogging/article-svc/configs"
-	"github.com/joebui/go-blogging/article-svc/pb"
 	"net"
 	"os"
 
+	"github.com/joebui/go-blogging/article-svc/api/grpc"
+	"github.com/joebui/go-blogging/article-svc/pkg/configs"
 	"github.com/pkg/errors"
 	"github.com/rs/zerolog"
 	"github.com/rs/zerolog/log"
 	"github.com/rs/zerolog/pkgerrors"
-	"google.golang.org/grpc"
+	grpcServ "google.golang.org/grpc"
+
+	_ "go.uber.org/automaxprocs"
 )
 
 func initLogger() {
@@ -26,14 +28,14 @@ func main() {
 
 	listen, err := net.Listen("tcp", ":8080")
 	if err != nil {
-		log.Error().Stack().Err(errors.Wrap(err, "net.Listen")).Msg("[main] error listening to port")
+		log.Error().Stack().Err(errors.Wrap(err, "net.Listen")).Msg("error listening to port")
 		panic(err)
 	}
 
-	gsrv := grpc.NewServer()
-	pb.RegisterArticleSvcServer(gsrv, &grpcServer{})
+	gsrv := grpcServ.NewServer()
+	grpc.RegisterArticleSvcServer(gsrv, &grpcServer{})
 	if err := gsrv.Serve(listen); err != nil {
-		log.Error().Stack().Err(errors.Wrap(err, "gsrv.Serve")).Msg("[main] error starting grpc server")
+		log.Error().Stack().Err(errors.Wrap(err, "gsrv.Serve")).Msg("error starting grpc server")
 		panic(err)
 	}
 }

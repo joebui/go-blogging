@@ -3,8 +3,8 @@ package services
 import (
 	"time"
 
-	"github.com/joebui/go-blogging/user-mgmt-svc/configs"
-	"github.com/joebui/go-blogging/user-mgmt-svc/internal/utils"
+	"github.com/joebui/go-blogging/user-mgmt-svc/pkg/configs"
+	"github.com/joebui/go-blogging/user-mgmt-svc/pkg/utils"
 
 	"github.com/golang-jwt/jwt"
 	"github.com/google/uuid"
@@ -16,13 +16,17 @@ var secret = []byte(configs.GetEnv().JwtSecret)
 
 func GenerateJwt(userId string) (string, error) {
 	current := time.Now()
+	iat := current.Unix()
+	exp := current.Add(utils.JWT_EXPIRY).Unix()
+	jti := uuid.New().String()
+
 	token := jwt.NewWithClaims(
 		jwt.SigningMethodHS256,
 		jwt.MapClaims{
 			"user_id": userId,
-			"iat":     current.Unix(),
-			"exp":     current.Add(utils.JWT_EXPIRY).Unix(),
-			"jti":     uuid.New().String(),
+			"iat":     iat,
+			"exp":     exp,
+			"jti":     jti,
 			"iss":     "user-mgmt-svc",
 			"aud":     "go-blogging",
 		},
@@ -37,9 +41,13 @@ func GenerateJwt(userId string) (string, error) {
 
 func ExtractUserIdFromJwt(token string) (string, error) {
 	claims := jwt.MapClaims{}
-	jwtToken, err := jwt.ParseWithClaims(token, claims, func(jwtToken *jwt.Token) (interface{}, error) {
-		return secret, nil
-	})
+	jwtToken, err := jwt.ParseWithClaims(
+		token,
+		claims,
+		func(jwtToken *jwt.Token) (interface{}, error) {
+			return secret, nil
+		},
+	)
 
 	if err != nil {
 		log.Error().Stack().Err(errors.Wrap(err, "jwt.ParseWithClaims")).Msg("[IsJwtValid] error parsing token")

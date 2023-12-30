@@ -3,10 +3,12 @@ package handlers
 import (
 	"context"
 
+	"github.com/joebui/go-blogging/user-mgmt-svc/api/grpc"
 	"github.com/joebui/go-blogging/user-mgmt-svc/internal/services"
-	"github.com/joebui/go-blogging/user-mgmt-svc/internal/types"
-	"github.com/joebui/go-blogging/user-mgmt-svc/internal/utils"
-	"github.com/joebui/go-blogging/user-mgmt-svc/pb"
+	"github.com/joebui/go-blogging/user-mgmt-svc/pkg/types"
+	"github.com/joebui/go-blogging/user-mgmt-svc/pkg/utils"
+	"github.com/pkg/errors"
+	"github.com/rs/zerolog/log"
 
 	"github.com/go-playground/validator/v10"
 )
@@ -20,12 +22,14 @@ type SignUp struct {
 func validateSignUpRequest(data *SignUp) error {
 	err := validator.New().Struct(data)
 	if err != nil {
+		log.Error().Stack().Err(errors.Wrap(err, "validate user")).Msg("sign up request validation error")
 		return err
 	}
+
 	return nil
 }
 
-func SignUpHandler(ctx context.Context, req *pb.SignUpRequest) (*pb.SignUpResponse, error) {
+func SignUpHandler(ctx context.Context, req *grpc.SignUpRequest) (*grpc.SignUpResponse, error) {
 	signUpData := SignUp{
 		Username: req.Username,
 		Email:    req.Email,
@@ -51,5 +55,5 @@ func SignUpHandler(ctx context.Context, req *pb.SignUpRequest) (*pb.SignUpRespon
 	if jwtErr != nil {
 		return nil, jwtErr
 	}
-	return &pb.SignUpResponse{Token: jwt, ExpiresIn: int32(utils.JWT_EXPIRY_IN_S)}, nil
+	return &grpc.SignUpResponse{Token: jwt, ExpiresIn: int32(utils.JWT_EXPIRY_IN_S)}, nil
 }

@@ -4,7 +4,9 @@ import (
 	"context"
 
 	"github.com/joebui/go-blogging/user-mgmt-svc/internal/services"
-	"github.com/joebui/go-blogging/user-mgmt-svc/internal/types"
+	"github.com/joebui/go-blogging/user-mgmt-svc/pkg/types"
+	"github.com/pkg/errors"
+	"github.com/rs/zerolog/log"
 
 	"github.com/go-playground/validator/v10"
 )
@@ -17,8 +19,10 @@ type SignIn struct {
 func validateSignInRequest(data *SignIn) error {
 	err := validator.New().Struct(data)
 	if err != nil {
+		log.Error().Stack().Err(errors.Wrap(err, "validator.New")).Msg("sign in request validation error")
 		return err
 	}
+
 	return nil
 }
 

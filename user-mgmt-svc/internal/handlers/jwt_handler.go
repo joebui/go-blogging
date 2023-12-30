@@ -8,7 +8,6 @@ import (
 
 func VerifyJwtHandler(ctx context.Context, token string) (string, error) {
 	userId, err := services.ExtractUserIdFromJwt(token)
-
 	if err != nil {
 		return "", err
 	}

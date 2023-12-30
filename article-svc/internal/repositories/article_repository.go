@@ -1,9 +1,9 @@
 package repositories
 
 import (
-	"github.com/joebui/go-blogging/article-svc/configs"
-	"github.com/joebui/go-blogging/article-svc/internal/types"
-	"github.com/joebui/go-blogging/article-svc/internal/utils"
+	"github.com/joebui/go-blogging/article-svc/pkg/configs"
+	"github.com/joebui/go-blogging/article-svc/pkg/types"
+	"github.com/joebui/go-blogging/article-svc/pkg/utils"
 )
 
 func GetAllArticles(page int32, limit int32) ([]types.Article, error) {

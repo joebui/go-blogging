@@ -4,7 +4,7 @@
 // 	protoc        v3.21.9
 // source: blog_svc.proto
 
-package pb
+package grpc
 
 import (
 	context "context"

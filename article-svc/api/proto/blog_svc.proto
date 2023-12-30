@@ -1,6 +1,6 @@
 syntax = "proto3";
 package proto;
-option go_package = "github.com/joebui/go-blogging/article-svc/pb";
+option go_package = "github.com/joebui/go-blogging/article-svc/grpc";
 
 service ArticleSvc {
   rpc GetAllArticles (GetAllArticlesRequest) returns (GetAllArticlesResponse) {}
